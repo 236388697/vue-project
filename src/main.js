@@ -13,7 +13,7 @@ import VueLazyload from 'vue-lazyload'
 FastClick.attach(document.body)
 Vue.config.productionTip = false
 
-Vue.use(VueSwiper)                                                      
+Vue.use(VueSwiper)
 Vue.use(VueResource)
 Vue.use(VueLazyload, {
   error: require('./assets/img/xiao2.png'),
@@ -28,7 +28,9 @@ new Vue({
   router,
   store,
   template: '<App/>',
-  components: { App }
+  components: {
+    App
+  }
 })
 
 Vue.directive('focus', {

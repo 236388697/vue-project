@@ -1,35 +1,11 @@
 <template>
 <keep-alive>
-  <div class="palace-box">
-    <div class="header">
+  <div class="palace-box" >
+    <div class="header" v-for ="item in banner">
       <div class="palace-header">
-        <img class="header-wrap-img" src="http://img1.qunarzz.com/sight/p0/1409/19/adca619faaab0898245dc4ec482b5722.jpg_600x330_f922b488.jpg" alt="">
+        <img class="header-wrap-img"  alt="">
       </div>
-      <div class="headerfigure">
-        <div class="headerfigure-list border-bottom">
-          <p class="headerfigure-list-address">
-            <span class="iconfont">&#xe60c;</span>北京市东城区景山前街4号
-          </p>
-           <i class="iconfont">&#xe6f8;</i>
-        </div>
-        <div class="headerfigure-list">
-          <p class="headerfigure-list-address">
-           <span class="iconfont">&#xe60c;</span>查看景点简介及开放时间
-          </p>
-          <i class="iconfont">&#xe6f8;</i>
-        </div>
-      </div>
-      <div class="commentsinfo-con">
-        <div class="commentsinfo-grade">
-          <p class="commentsinfo-grade-scores">
-           <span class="iconfont">&#xe60c;</span> 5.0分
-          </p>
-          <i class="commentsinfo-grade-numbers">
-	  	   		169950评论
-          <span class="iconfont">&#xe6f8;</span>
-	  	   	</i>
-        </div>
-      </div>
+    
       <div class="announce-inner pink">
         <p class="announce-icon">
           <span class="iconfont">&#xe60c;</span>除法定节假日，故宫博物院实行周一闭馆。
@@ -43,7 +19,7 @@
   	   		<span class="iconfont">&#xe60c;</span>去哪儿推荐
   	   	</h3>
       </div>
-      <div class="con-ticket" v-for="item in recommendInfo" :key="item.id">
+      <div class="con-ticket" v-for="item in recommend" :key="item.id">
         <div class="con-ticket-item" >
           <h6 class="con-ticket-onedaytitle">
                 {{item.news}}
@@ -67,18 +43,18 @@
           </div>
         </div>
       </div>
-      <div class="con-ticket-group" >
+      <div class="con-ticket-group" v-for = "item in ticketList">
          <h3 class="con-title-text">
-            <span class="iconfont">&#xe60c;</span> 故宫当成人票
+            <span class="iconfont">&#xe60c;</span> {{item.title}}
          </h3>
-        <div class="conticket white" v-for="item in adultInfo" :key="item.id">
+        <div class="conticket white" v-for="subitem in item.data">
           <div class="conticket-list">
             <p class="conticket-list-address">
-              {{item.details}}
-              <span>{{item.news}}</span>
+              {{subitem.details}}
+              <span>{{subitem.news}}</span>
             </p>
             <div class="con-ticket-list-side">
-               <i>&yen;{{item.price}}</i><span>起</span><span class="iconfont">&#xe74a;</span>
+               <i>&yen;{{subitem.price}}</i><span>起</span><span class="iconfont">&#xe74a;</span>
              </div> 
           </div>
         </div>
@@ -86,167 +62,13 @@
           <a href="">查看剩余产品</a><span class="iconfont">&#xe74a;</span>
         </div>
       </div>
-      <div class="con-ticket-group">
-        <h3 class="con-title-text">
-            <span class="iconfont">&#xe60c;</span> 故宫当学生票
-         </h3>
-        <div class="conticket white"  v-for="item in studentInfo" :key="item.id">
-          <div class="conticket-list">
-            <p class="conticket-list-address">
-              {{item.details}}
-              <span>{{item.news}}</span>
-            </p>
-            <div class="con-ticket-list-side">
-               <i>&yen;{{item.price}}</i><span>起</span><span class="iconfont">&#xe74a;</span>
-             </div> 
-          </div>
-        </div>
-        <div class="cen-button">
-          <a href="">查看剩余产品</a><span class="iconfont">&#xe74a;</span>
-        </div>
-      </div>
-      <div class="con-ticket-group">
-        <h3 class="con-title-text">
-            <span class="iconfont">&#xe60c;</span> 故宫当老人票
-         </h3>
-        <div class="conticket white" v-for="item in oldInfo" :key="item.id">
-          <div class="conticket-list">
-            <p class="conticket-list-address">
-              {{item.details}}
-              <span>{{item.news}}</span>
-            </p>
-            <div class="con-ticket-list-side">
-               <i>&yen;{{item.price}}</i><span>起</span><span class="iconfont">&#xe74a;</span>
-             </div> 
-          </div>
-        </div>
-        <div class="cen-button">
-          <a href="">查看剩余产品</a><span class="iconfont">&#xe74a;</span>
-        </div>
-      </div>
-      <div class="con-ticket-group">
-        <h3 class="con-title-text">
-            <span class="iconfont">&#xe60c;</span> 热销组合产品
-         </h3>
-        <div class="conticket white" v-for="item in combinationInfo" :key="item.id">
-          <div class="conticket-list">
-            <p class="conticket-list-address">
-              {{item.details}}
-              <span>{{item.news}}</span>
-            </p>
-            <div class="con-ticket-list-side">
-               <i>&yen;{{item.price}}</i><span>起</span><span class="iconfont">&#xe74a;</span>
-             </div> 
-          </div>
-        </div>
-        <div class="cen-button">
-          <a href="">查看剩余产品</a><span class="iconfont">&#xe74a;</span>
-        </div>
-      </div>
-      <div class="con-ticket-group">
-        <h3 class="con-title-text">
-            <span class="iconfont">&#xe60c;</span> 自助导游器
-         </h3>
-        <div class="conticket white" v-for="item in selfHelpGuideInfo" :key="item.id">
-          <div class="conticket-list">
-            <p class="conticket-list-address">
-              {{item.details}}
-              <span>{{item.news}}</span>
-            </p>
-            <div class="con-ticket-list-side">
-               <i>&yen;{{item.price}}</i><span>起</span><span class="iconfont">&#xe74a;</span>
-             </div> 
-          </div>
-        </div>
-        <div class="cen-button">
-          <a href="">查看剩余产品</a><span class="iconfont">&#xe74a;</span>
-        </div>
-      </div>
-      <div class="con-ticket-group">
-        <h3 class="con-title-text">
-            <span class="iconfont">&#xe60c;</span> 珍宝馆、钟表馆
-         </h3>
-        <div class="conticket white" v-for="item in jewelryInfo" :key="item.id">
-          <div class="conticket-list">
-            <p class="conticket-list-address">
-               {{item.details}}
-              <span>{{item.news}}</span>
-            </p>
-            <div class="con-ticket-list-side">
-               <i>&yen;{{item.price}}</i><span>起</span><span class="iconfont">&#xe74a;</span>
-             </div> 
-          </div>
-        </div>
-        <div class="cen-button">
-          <a href="">查看剩余产品</a><span class="iconfont">&#xe74a;</span>
-        </div>
-      </div>
-      <div class="con-ticket-group">
-        <h3 class="con-title-text">
-            <span class="iconfont">&#xe60c;</span> 故宫导游讲解
-         </h3>
-        <div class="conticket white" v-for="item in tourServiceInfo" :key="item.id">
-          <div class="conticket-list">
-            <p class="conticket-list-address">
-              {{item.details}}
-              <span>{{item.news}}</span>
-            </p>
-            <div class="con-ticket-list-side">
-               <i>&yen;{{item.price}}</i><span>起</span><span class="iconfont">&#xe74a;</span>
-             </div> 
-          </div>
-        </div>
-        <div class="cen-button">
-          <a href="">查看剩余产品</a><span class="iconfont">&#xe74a;</span>
-        </div>
-      </div>
-      <div class="con-ticket-group">
-        <h3 class="con-title-text">
-            <span class="iconfont">&#xe60c;</span> 故宫礼物/老人儿童推车服务
-         </h3>
-        <div class="conticket white" v-for="item in MuseumGiftInfo" :key="item.id">
-          <div class="conticket-list">
-            <p class="conticket-list-address">
-              {{item.details}}
-              <span>{{item.news}}</span>
-            </p>
-            <div class="con-ticket-list-side">
-               <i>&yen;{{item.price}}</i><span>起</span><span class="iconfont">&#xe74a;</span>
-             </div> 
-          </div>
-          
-        </div>
-        <div class="cen-button">
-          <a href="">查看剩余产品</a><span class="iconfont">&#xe74a;</span>
-         </div>
-      </div>
-       <div class="con-ticket-group">
-        <h3 class="con-title-text">
-            <span class="iconfont">&#xe60c;</span> 一日游
-         </h3>
-        <div class="conticket white" v-for="item in dayTourInfo" :key="item.id">
-          <div class="conticket-list">
-            <p class="conticket-list-address">
-              {{item.details}}
-              <span>{{item.news}}</span>
-            </p>
-            <div class="con-ticket-list-side">
-               <i>&yen;{{item.price}}</i><span>起</span><span class="iconfont">&#xe74a;</span>
-             </div> 
-          </div>
-          
-        </div>
-        <div class="cen-button">
-          <a href="">查看剩余产品</a><span class="iconfont">&#xe74a;</span>
-         </div>
-        
-      </div>
+    
     </div>
     <div class="userComment">
         <h3 class="con-title-text">
           <span class="iconfont">&#xe60c;</span> 用户评价
         </h3>
-        <div class="user-comment-list"  v-for="item in userappraiseInfo" :key="item.id">
+        <div class="user-comment-list"  v-for="item in userappraise" :key="item.id">
                   <div class="user-comment-title">
                       <p class="user-comment-list-comment">
                         {{item.details}}
@@ -275,7 +97,7 @@
         </h3>
 
       <ul>
-      <li class="center-list" v-for="item in centerlistsInfo" :key="item.id">
+      <li class="center-list" v-for="item in centerlists" :key="item.id">
           <div class="cen-list-left">
              <img  class="cen-list-img" :src="item.imgUrl"/>
           </div>
@@ -314,20 +136,11 @@ export default {
 
   data () {
     return {
-      figureInfo: [],
-      recommendInfo: [],
-      adultInfo: [],
-      studentInfo: [],
-      oldInfo: [],
-      combinationInfo: [],
-      selfHelpGuideInfo: [],
-      jewelryInfo: [],
-      tourServiceInfo: [],
-      MuseumGiftInfo: [],
-      dayTourInfo: [],
-      userappraiseInfo: [],
-      centerlistsInfo: []
-
+      banner: [],
+      recommend: [],
+      ticketList: [],
+      userappraise: [],
+      centerlists: []
     }
   },
 
@@ -340,20 +153,26 @@ export default {
 
     handleGetDataSucc (res) {
       const body = res.body
-      if (body && body.data && body.data.figure) {
-        this.figureInfo = body.data.figure
-        this.recommendInfo = body.data.recommend
-        this.adultInfo = body.data.adult
-        this.studentInfo = body.data.student
-        this.oldInfo = body.data.old
-        this.combinationInfo = body.data.combination
-        this.selfHelpGuideInfo = body.data.selfHelpGuide
-        this.jewelryInfo = body.data.jewelry
-        this.tourServiceInfo = body.data.tourService
-        this.MuseumGiftInfo = body.data.MuseumGift
-        this.dayTourInfo = body.data.dayTour
-        this.userappraiseInfo = body.data.userappraise
-        this.centerlistsInfo = body.data.centerlists
+      
+      if (body && body.data) {
+        this.banner = body.data.banner
+        this.recommend = body.data.recommend
+        this.ticketList = body.data.ticketList
+        this.userappraise = body.data.userappraise
+        this.centerlists = body.data.centerlists
+
+        // this.recommendInfo = body.data.recommend
+        // this.adultInfo = body.data.adult
+        // this.studentInfo = body.data.student
+        // this.oldInfo = body.data.old
+        // this.combinationInfo = body.data.combination
+        // this.selfHelpGuideInfo = body.data.selfHelpGuide
+        // this.jewelryInfo = body.data.jewelry
+        // this.tourServiceInfo = body.data.tourService
+        // this.MuseumGiftInfo = body.data.MuseumGift
+        // this.dayTourInfo = body.data.dayTour
+        // this.userappraiseInfo = body.data.userappraise
+        // this.centerlistsInfo = body.data.centerlists
       }
     }
 
